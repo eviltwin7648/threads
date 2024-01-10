@@ -10,6 +10,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 // import { updateUser } from "@/lib/actions/user.action";
 import { ThreadValidation } from "@/lib/validations/thread";
+import { createThread } from "@/lib/actions/thread.actions";
 interface Props {
   user: {
     id: string;
@@ -36,8 +37,15 @@ function PostThread({userId}:{userId : string}){
      },
    });
 
-const onSubmit = async ()=>{
-    // await createThread()
+const onSubmit = async (values: z.infer<typeof ThreadValidation>)=>{
+    await createThread({
+      text:values.thread,
+      author: userId,
+      communityId : null,
+      path: pathname,
+    });
+
+    router.push("/")
 }
   
 
