@@ -159,7 +159,7 @@ export const POST = async (request: Request) => {
     }
   }
 
-  // Listen organization updation event
+  // Listen organization updation event  
   if (eventType === "organization.updated") {
     try {
       // Resource: https://clerk.com/docs/reference/backend-api/tag/Organizations#operation/UpdateOrganization
